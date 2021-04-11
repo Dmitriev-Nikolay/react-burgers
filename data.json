@@ -1,0 +1,104 @@
+{
+    "burgers": [
+        {
+            "id": 0,
+            "imageUrl": "./src/assets/img/alpacino.jpg",
+            "name": "Аль Пачино",
+            "types": [0, 1],
+            "sizes": ["маленький", "средний", "большой"],
+            "price": 760,
+            "category": 0,
+            "rating": 4
+        },
+        {
+            "id": 1,
+            "imageUrl": "./src/assets/img/bruklin.jpg",
+            "name": "Бруклин",
+            "types": [0, 1],
+            "sizes": ["маленький", "средний", "большой"],
+            "price": 920,
+            "category": 0,
+            "rating": 4
+        },
+        {
+            "id": 2,
+            "imageUrl": "./src/assets/img/chiken.jpg",
+            "name": "Куриный",
+            "types": [0, 1],
+            "sizes": ["маленький", "средний", "большой"],
+            "price": 560,
+            "category": 0,
+            "rating": 4
+        },
+        {
+            "id": 3,
+            "imageUrl": "./src/assets/img/classic.jpg",
+            "name": "Классический",
+            "types": [0, 1],
+            "sizes": ["маленький", "средний", "большой"],
+            "price": 660,
+            "category": 0,
+            "rating": 4
+        },
+        {
+            "id": 4,
+            "imageUrl": "./src/assets/img/fish.jpg",
+            "name": "Рыбный",
+            "types": [0, 1],
+            "sizes": ["маленький", "средний", "большой"],
+            "price": 450,
+            "category": 0,
+            "rating": 4
+        },
+        {
+            "id": 5,
+            "imageUrl": "./src/assets/img/fourcheese.jpg",
+            "name": "4 Сыра",
+            "types": [0, 1],
+            "sizes": ["маленький", "средний", "большой"],
+            "price": 580,
+            "category": 0,
+            "rating": 4
+        },
+        {
+            "id": 6,
+            "imageUrl": "./src/assets/img/gamburger.jpg",
+            "name": "Гамбургер",
+            "types": [0, 1],
+            "sizes": ["маленький", "средний", "большой"],
+            "price": 400,
+            "category": 0,
+            "rating": 4
+        },
+        {
+            "id": 7,
+            "imageUrl": "./src/assets/img/jam.jpg",
+            "name": "Джем",
+            "types": [0, 1],
+            "sizes": ["маленький", "средний", "большой"],
+            "price": 470,
+            "category": 0,
+            "rating": 4
+        },
+        {
+            "id": 8,
+            "imageUrl": "./src/assets/img/onill.jpg",
+            "name": "О'нилл",
+            "types": [0, 1],
+            "sizes": ["маленький", "средний", "большой"],
+            "price": 860,
+            "category": 0,
+            "rating": 4
+        },
+        {
+            "id": 9,
+            "imageUrl": "./src/assets/img/peach.jpg",
+            "name": "Персиковый",
+            "types": [0, 1],
+            "sizes": ["маленький", "средний", "большой"],
+            "price": 590,
+            "category": 0,
+            "rating": 4
+        }
+    ]
+}
