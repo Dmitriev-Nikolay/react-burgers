@@ -33,6 +33,11 @@
     transform: translateY(1px);
   }
 
+  &.disabled {
+    opacity: .4;
+    pointer-events: none;
+  }
+
   &--circle {
     display: flex;
     align-items: center;

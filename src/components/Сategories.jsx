@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // class Categories extends React.Component {
 //     state = {
@@ -52,11 +53,11 @@ const Categories = (props) => {
                 >Все
                 </li>
                 {
-                    burgerCategories && burgerCategories.map((categoryItem, i) => (
+                    burgerCategories && burgerCategories.map((categoryItem, index) => (
                         <li
-                            className={ activeCategory === i ? 'active' : '' }
-                            onClick={ () => onSelectedCategory(i) }
-                            key={ `${ categoryItem }_${ i }` }
+                            className={ activeCategory === index ? 'active' : '' }
+                            onClick={ () => onSelectedCategory(index) }
+                            key={ `${ categoryItem }_${ index }` }
                         >
                             { categoryItem }
                         </li>
@@ -66,6 +67,10 @@ const Categories = (props) => {
             </ul>
         </div>
     );
+};
+
+Categories.propTypes = {
+    burgerCategories: PropTypes.array.isRequired,
 };
 
 export default Categories;
