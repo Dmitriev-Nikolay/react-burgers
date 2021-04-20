@@ -1,24 +1,43 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCategory } from '../store/actions/filters';
+
 import { Categories, SortPopUp, BurgerCard } from '../components';
 
-const Home = (props) => {
-    const { products } = props;
+const nameCategories = ['Мясные', 'Экзотические', 'Куриные', 'Острые', 'Рыбные'];
+const nameSort = [
+    { name: 'популярности', type: 'popular' },
+    { name: 'цене', type: 'price' },
+    { name: 'алфавиту', type: 'alphabet' },
+];
+
+const Home = () => {
+    const dispatch = useDispatch(); // mapActions
+    const { burgers, filtersCategory } = useSelector(state => { // mapState
+        return {
+        burgers: state.burgersReducer.items,
+        filtersCategory: state.filtersReducer.sortBy,
+        };
+    });
+
+    const onClickItem = React.useCallback((i) => {
+        dispatch(setCategory(i));
+    }, []);
 
     return (
         <div className="container">
             <div className="content__top">
-                <Categories burgerCategories={ ['Мясные', 'Экзотические', 'Куриные', 'Острые', 'Рыбные'] } />
-                <SortPopUp sortCategories={[
-                    { name: 'популярности', type: 'popular' },
-                    { name: 'цене', type: 'price' },
-                    { name: 'алфавиту', type: 'alphabet' },
-                ]} 
+                <Categories 
+                    burgerCategories={ nameCategories  } 
+                    onClickItem={ onClickItem }
+                />
+                <SortPopUp sortCategories={ nameSort } 
                 />
             </div>
             <h2 className="content__title">Все бургеры</h2>
             <div className="content__items">
                 {
-                    products.map((burger) => {
+                    burgers && burgers.map((burger) => {
                         return (
                             <BurgerCard
                                 key={ burger.id }

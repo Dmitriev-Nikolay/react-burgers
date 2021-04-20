@@ -5,15 +5,13 @@ const initialState = {
 
 const burgers = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_BURGERS': {
+        case 'SET_BURGERS': 
             return {
                 ...state,
                 items: action.payload,
             };
-        };
-        default: {
+        default: 
             return state;
-        };
     };
 };
 

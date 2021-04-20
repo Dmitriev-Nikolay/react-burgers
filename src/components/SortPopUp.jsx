@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SortPopUp = (props) => {
+const SortPopUp = React.memo((props) => {
     const { sortCategories } = props;
     const [activeSort, setActiveSort] = React.useState(0); // активная категория сортировки
     const [stateVisiblePopUp, setVisiblePopUp] = React.useState(false); // видимость меню сортировки
@@ -30,7 +30,7 @@ const SortPopUp = (props) => {
     }, []);
 
     return (
-        <div ref={sortRef} className="sort">
+        <div ref={ sortRef } className="sort">
             <div className="sort__label">
                 <svg className={ stateVisiblePopUp ? 'rotate' : '' } width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -63,7 +63,7 @@ const SortPopUp = (props) => {
             }
         </div>
     );
-};
+});
 
 SortPopUp.propTypes = {
     sortCategories: PropTypes.array.isRequired,

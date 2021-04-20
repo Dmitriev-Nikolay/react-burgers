@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import StarIcon from '../assets/img/star.svg';
 
 function BurgerCard(props) {
-    const { imageUrl, name, types, sizes, price, category, rating } = props;
+    const { imageUrl, name, types, sizes, price, category, rating } = props; // { ...burger }
 
     const [activeType, setActiveType] = React.useState(types[0]);
     const typeNames = ["Классическая булочка", "Булочка с кунжутом"];
@@ -40,7 +40,7 @@ function BurgerCard(props) {
                                     'disabled': !types.includes(index),
                                 })
                                 }
-                                key={`${ type}_${ index }`}> 
+                                key={`${ type }_${ index }`}> 
                                 { type }
                             </li>
                         ))
@@ -56,7 +56,7 @@ function BurgerCard(props) {
                                     'disabled': !sizes.includes(index),
                                 })
                                 }
-                                key={`${ size }_${ index }`}>
+                                key={ `${ size }_${ index }` }>
                                 { size }
                             </li>
                         ))

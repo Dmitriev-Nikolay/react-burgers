@@ -5,15 +5,18 @@ const initialState = {
 
 const filters = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_SORT': {
+        case 'SET_SORT': 
             return {
                 ...state,
                 sortBy: action.payload,
             };
-        };
-        default: {
+        case 'SET_CATEGORY': 
+            return {
+                ...state,
+                category: action.payload,
+            };
+        default: 
             return state;
-        };
     };
 };
 

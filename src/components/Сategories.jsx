@@ -36,12 +36,13 @@ import PropTypes from 'prop-types';
 //     };
 // };
 
-const Categories = (props) => {
+const Categories = React.memo((props) => {
     const [activeCategory, setActiveCategory] = React.useState(null);
-    const { burgerCategories } = props;
+    const { burgerCategories, onClickItem } = props;
 
     const onSelectedCategory = (i) => {
         setActiveCategory(i);
+        onClickItem(i);
     };
 
     return (
@@ -67,7 +68,7 @@ const Categories = (props) => {
             </ul>
         </div>
     );
-};
+});
 
 Categories.propTypes = {
     burgerCategories: PropTypes.array.isRequired,
