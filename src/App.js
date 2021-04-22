@@ -1,11 +1,11 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Route } from 'react-router-dom';
 // import { connect } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { setBurgers } from './store/actions/burgers';
+// import { useDispatch } from 'react-redux';
+// import { axiosBurgers } from './store/actions/burgers';
 
-import { Header } from './components';
+import { Header, Footer } from './components';
 import { Home, Cart } from './pages';
 
 
@@ -79,15 +79,16 @@ import { Home, Cart } from './pages';
 /* func component from redux store and redux hooks */
 
 function App() {
-  const dispatch = useDispatch(); // mapActions
+  // const dispatch = useDispatch(); // mapActions
   
   // получение бургеров один раз при запуске приложения и закидывание их в redux
-  React.useEffect(() => {
-    axios.get('http://localhost:3001/burgers')
-      .then(({ data }) => {
-        dispatch(setBurgers(data));
-      });
-  }, [dispatch]); 
+  // React.useEffect(() => {
+  // dispatch(axiosBurgers());
+    // axios.get('http://localhost:3001/burgers')
+    //   .then(({ data }) => {
+    //     dispatch(setBurgers(data));
+    //   });
+  // }, []); 
 
   return (
     <div className="wrapper">
@@ -96,6 +97,7 @@ function App() {
         <Route exact path="/" component={ Home } />
         <Route exact path="/cart" component={ Cart } />
       </div>
+      <Footer />
     </div>
   );
 };

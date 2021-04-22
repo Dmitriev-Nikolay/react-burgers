@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { setCategory } from '../store/actions/filters';
+import { axiosBurgers } from '../store/actions/burgers';
 
 import { Categories, SortPopUp, BurgerCard } from '../components';
 
@@ -13,6 +15,11 @@ const nameSort = [
 
 const Home = () => {
     const dispatch = useDispatch(); // mapActions
+
+    React.useEffect(() => {
+        dispatch(axiosBurgers());
+    }, []); 
+
     const { burgers, filtersCategory } = useSelector(state => { // mapState
         return {
         burgers: state.burgersReducer.items,
