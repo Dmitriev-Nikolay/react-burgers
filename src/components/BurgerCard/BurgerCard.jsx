@@ -1,11 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import StarIcon from '../assets/img/star.svg';
-import ContentLoader from 'react-content-loader';
+import StarIcon from '../../assets/img/star.svg';
 
 function BurgerCard(props) {
-    const { imageUrl, name, types, sizes, price, category, rating } = props; // { ...burger }
+    const { imageUrl, name, types, sizes, price, rating } = props; // { ...burger }
 
     const [activeType, setActiveType] = React.useState(types[0]);
     const typeNames = ["Классическая булочка", "Булочка с кунжутом"];
@@ -19,24 +18,6 @@ function BurgerCard(props) {
     const onSelectedSize = (i) => {
         setActiveSize(i);
     };
-
-    // return (
-    //     <ContentLoader 
-    //         speed={ 2 }
-    //         width={ 280 }
-    //         height={ 393 }
-    //         viewBox="0 0 280 393"
-    //         backgroundColor="#f3f3f3"
-    //         foregroundColor="#ecebeb"
-    //     >
-    //         <rect x="0" y="190" rx="10" ry="10" width="280" height="25" /> 
-    //         <rect x="1" y="229" rx="10" ry="10" width="280" height="100" /> 
-    //         <rect x="10" y="-1" rx="100" ry="100" width="260" height="180" /> 
-    //         <rect x="130" y="350" rx="30" ry="30" width="150" height="45" /> 
-    //         <rect x="0" y="360" rx="10" ry="10" width="90" height="27" /> 
-    //         <rect x="240" y="0" rx="10" ry="10" width="40" height="20" />
-    //     </ContentLoader>
-    // )
 
     return (
         <div className="burger-block">
@@ -112,7 +93,6 @@ BurgerCard.propTypes = {
     types: PropTypes.arrayOf(PropTypes.number).isRequired,
     sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
     price: PropTypes.number.isRequired,
-    category: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
 };
 

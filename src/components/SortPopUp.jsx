@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SortPopUp = React.memo((props) => {
-    const { sortCategories } = props;
-    const [activeSort, setActiveSort] = React.useState(0); // активная категория сортировки
+    const { sortCategories, onClickSort, activeSort  } = props;
+    // const [activeSort, setActiveSort] = React.useState(0); // активная категория сортировки
     const [stateVisiblePopUp, setVisiblePopUp] = React.useState(false); // видимость меню сортировки
-    const activeSortName = sortCategories[activeSort].name;
+    const activeSortName = sortCategories.find(obj => obj.type === activeSort).name;
 
     const sortRef = React.useRef();
 
     const onSelectedSort = (i) => {
-        setActiveSort(i);
+        // setActiveSort(i);
+        onClickSort(i);
         setVisiblePopUp(false);
     };
 
@@ -49,8 +50,8 @@ const SortPopUp = React.memo((props) => {
                         {
                             sortCategories && sortCategories.map((sortItem, index) => (
                                 <li
-                                    className={ activeSort === index ? 'active' : '' }
-                                    onClick={ () => onSelectedSort(index) }
+                                    className={ activeSort === sortItem.type ? 'active' : '' }
+                                    onClick={ () => onSelectedSort(sortItem.type) }
                                     key={ `${ sortItem.name }_${ index }` }
                                 >
                                     { sortItem.name }

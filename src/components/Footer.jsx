@@ -2,7 +2,6 @@ import React from 'react';
 import BurgerLogo from '../assets/img/burger-logo.svg';
 import MyLogo from '../assets/img/My_logo.png';
 
-
 const Footer = () => {
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -36,11 +35,11 @@ const Footer = () => {
                 </div>
                 <div className="social">
                     <p>Бургерок в соцсетях</p>
-                    <a href="https://github.com/Dmitriev-Nikolay" target="_blank"><i className="fa fa-github fa-2x"></i></a>
-                    <a href="" target="_blank"><i className="fa fa-youtube fa-2x"></i></a>
-                    <a href="" target="_blank"><i className="fa fa-paper-plane fa-2x"></i></a>
-                    <a href="" target="_blank"><i className="fa fa-facebook fa-2x"></i></a>
-                    <a href="" target="_blank"><i className="fa fa-twitter fa-2x"></i></a>
+                    <a href="https://github.com/Dmitriev-Nikolay" target="_blank" rel="noreferrer"><i className="fa fa-github fa-2x"></i></a>
+                    <a href="#/" target="_blank" rel="noreferrer"><i className="fa fa-youtube fa-2x"></i></a>
+                    <a href="#/" target="_blank" rel="noreferrer"><i className="fa fa-paper-plane fa-2x"></i></a>
+                    <a href="#/" target="_blank" rel="noreferrer"><i className="fa fa-facebook fa-2x"></i></a>
+                    <a href="#/" target="_blank" rel="noreferrer"><i className="fa fa-twitter fa-2x"></i></a>
                 </div>
             </div>
         </div>
