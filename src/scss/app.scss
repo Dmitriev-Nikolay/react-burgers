@@ -1,8 +1,8 @@
-@import 'fonts';
-@import '/src/scss/variables';
-@import 'libs/normalize';
+@import "fonts";
+@import "/src/scss/variables";
+@import "libs/normalize";
 
-@import 'components/all';
+@import "components/all";
 
 body {
   background-color: $background;
@@ -15,6 +15,19 @@ body {
   margin: 50px auto;
   border-radius: 10px;
   max-width: 1400px;
+}
+
+.container {
+  width: $container-width;
+  margin: 0 auto;
+
+  &--cart {
+    max-width: 820px;
+    margin: 90px auto;
+    .content__title {
+      margin: 0;
+    }
+  }
 }
 
 .content {
@@ -33,19 +46,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-}
-
-.container {
-  width: $container-width;
-  margin: 0 auto;
-
-  &--cart {
-    max-width: 820px;
-    margin: 90px auto;
-    .content__title {
-      margin: 0;
-    }
   }
 }
 
