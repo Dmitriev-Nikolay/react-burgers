@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 // import { axiosBurgers } from './store/actions/burgers';
 
 import { Header, Footer } from './components';
-import { Home, Cart } from './pages';
+import { Home, Cart, CartEmpty } from './pages';
 
 
 /* func component without redux store */
@@ -96,6 +96,7 @@ function App() {
       <div className="content">
         <Route exact path="/" component={ Home } />
         <Route exact path="/cart" component={ Cart } />
+        <Route exact path="/cart-empty" component={ CartEmpty } />
       </div>
       <Footer />
     </div>

@@ -1,23 +1,29 @@
-@import '/src/scss/variables';
+@import "/src/scss/variables";
 
 .categories {
   ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    transition: 0.1s;
 
     li {
       background-color: #f9f9f9;
       padding: 13px 30px;
       border-radius: 30px;
       margin-right: 10px;
+      margin-bottom: 10px;
       font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.1s ease-in-out;
+      transition: background-color .1s ease-in-out;
+      transition: 0.5s;
       @include noselect();
 
       &:hover {
-        background-color: darken(#f9f9f9, 2%);
+        background-color: darken(#f3f3f3, 3%);
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
       }
 
       &:active {

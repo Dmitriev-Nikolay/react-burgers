@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+
 import StarIcon from '../../assets/img/star.svg';
 
 function BurgerCard(props) {
-    const { imageUrl, name, types, sizes, price, rating } = props; // { ...burger }
+    const { id, imageUrl, name, types, sizes, price, rating, onClickAddBurger, burgerCountInСart } = props; // { ...burger }
 
     const [activeType, setActiveType] = React.useState(types[0]);
     const typeNames = ["Классическая булочка", "Булочка с кунжутом"];
@@ -17,6 +18,18 @@ function BurgerCard(props) {
 
     const onSelectedSize = (i) => {
         setActiveSize(i);
+    };
+
+    const onAddBurger = () => {
+        const cartItem = {
+            id,
+            imageUrl,
+            name,
+            price,
+            size: sizeNames[activeSize],
+            type: typeNames[activeType],
+        };
+        onClickAddBurger(cartItem);
     };
 
     return (
@@ -65,7 +78,9 @@ function BurgerCard(props) {
             </div>
             <div className="burger-block__bottom">
                 <div className="burger-block__price">от { price } ₽</div>
-                <div className={ classNames({
+                <div 
+                onClick={ onAddBurger }
+                className={ classNames({
                     'button button--outline button--add': true,
                     'disabled': price === 0,
                 })
@@ -79,7 +94,7 @@ function BurgerCard(props) {
                             fill="white" />
                     </svg>
                     <span>Добавить</span>
-                    <i>2</i>
+                    <i>{ !burgerCountInСart ? 0 : burgerCountInСart }</i>
                 </div>
             </div>
         </div>
@@ -94,6 +109,7 @@ BurgerCard.propTypes = {
     sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
+    addToCart: PropTypes.func,
 };
 
 BurgerCard.defaultProps = {

@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { setCategory, setSort } from '../store/actions/filters';
+import { addBurgerToCart } from '../store/actions/cart';
 import { axiosBurgers } from '../store/actions/burgers';
 
 import { Categories, SortPopUp, BurgerCard, BurgerCardLoading } from '../components';
@@ -14,17 +15,19 @@ const nameSort = [
 ];
 
 const Home = () => {
-    const { isLoaded, burgers, sortBy, category } = useSelector(state => { // mapState
+    const { isLoaded, burgers, sortBy, category, cartItems } = useSelector(state => { // mapState
         return {
             isLoaded: state.burgersReducer.isLoaded,
             burgers: state.burgersReducer.items,
             sortBy: state.filtersReducer.sortBy,
             category: state.filtersReducer.category,
+            cartItems: state.cartReducer.items,
         };
     });
+    console.log(cartItems);
 
     const dispatch = useDispatch(); // mapActions
-    
+
     React.useEffect(() => {
         dispatch(axiosBurgers(sortBy, category));
     }, [dispatch, sortBy, category]);
@@ -36,6 +39,10 @@ const Home = () => {
     const onSelectSort = React.useCallback((typeSort) => {
         dispatch(setSort(typeSort));
     }, [dispatch]);
+
+    const addItemToCart = (burgerObj) => {
+        dispatch(addBurgerToCart(burgerObj));
+    };
 
     return (
         <div className="container">
@@ -60,6 +67,8 @@ const Home = () => {
                                 <BurgerCard
                                     key={ burger.id }
                                     { ...burger }
+                                    burgerCountInСart={ cartItems[burger.id] && cartItems[burger.id].length }
+                                    onClickAddBurger={ addItemToCart }
                                 // imageUrl={ burger.imageUrl }
                                 // name={ burger.name }
                                 // types={ burger.types }

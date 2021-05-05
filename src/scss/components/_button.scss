@@ -1,4 +1,4 @@
-@import '/src/scss/variables';
+@import "/src/scss/variables";
 
 .button {
   display: inline-block;
@@ -25,7 +25,26 @@
   }
 
   &:hover {
-    background-color: darken($orange, 8%);
+    background-image: darken($orange, 8%);
+  }
+
+  &:hover .button__count {
+    transform: translateX(-5px);
+    transition-delay: 0.2s;
+    opacity: 0;
+  }
+
+  .button__arrow-right {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    opacity: 0;
+  }
+
+  &:hover .button__arrow-right {
+    transform: translateX(-10px);
+    transition-delay: 0.2s;
+    opacity: 1;
   }
 
   &:active {
@@ -34,7 +53,7 @@
   }
 
   &.disabled {
-    opacity: .4;
+    opacity: 0.4;
     pointer-events: none;
   }
 
@@ -100,6 +119,14 @@
     margin-right: 14px;
   }
 
+  &__count {
+    width: 40px;
+  }
+
+  &__price {
+    width: 70px;
+  }
+
   &--add {
     svg {
       margin-right: 2px;
@@ -114,6 +141,7 @@
       i {
         background-color: #fff;
         color: $orange;
+        box-shadow: 0px 0px 2px 2px #fff;
       }
     }
 
@@ -129,15 +157,18 @@
       font-size: 13px;
       line-height: 22px;
       position: relative;
-      top: -1px;
-      left: 3px;
+      left: 8px;
+      vertical-align: bottom;
+      box-shadow: 0px 0px 2px 2px $orange;
     }
   }
 
   &--cart {
+    position: relative;
     display: flex;
+    justify-content: center;
     align-items: center;
-    line-height: 23px;
+    line-height: 24px;
     padding: 12px 25px;
 
     svg {
