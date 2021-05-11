@@ -7,6 +7,7 @@ import BurgerCard from './BurgerCard/BurgerCard';
 import BurgerCardLoading from './BurgerCard/BurgerCardLoading';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
+import CartItem from './CartItem';
 
 export {
     Button,
@@ -18,4 +19,5 @@ export {
     BurgerCardLoading,
     Footer,
     ScrollToTop,
+    CartItem,
 };

@@ -24,7 +24,6 @@ const Home = () => {
             cartItems: state.cartReducer.items,
         };
     });
-    console.log(cartItems);
 
     const dispatch = useDispatch(); // mapActions
 

@@ -1,11 +1,11 @@
-@import '/src/scss/variables';
+@import "/src/scss/variables";
 
 .burger-block {
   position: relative;
   width: 280px;
   text-align: center;
   margin: 20px 40px;
-  transition: .3s;
+  transition: 0.3s;
 
   &__image {
     width: 260px;
@@ -56,7 +56,7 @@
           cursor: auto;
         }
         &.disabled {
-          opacity: .4;
+          opacity: 0.4;
           pointer-events: none;
         }
       }
@@ -71,6 +71,7 @@
   }
 
   &__price {
+    margin-left: 40px;
     font-weight: bold;
     font-size: 22px;
     line-height: 27px;

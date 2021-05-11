@@ -14,13 +14,20 @@ const cart = (state = initialState, action) => {
                     : [...state.items[action.payload.id], action.payload],
             };
             const allItemsInCart = [].concat.apply([], Object.values(actualObj));
-            const cartSum = allItemsInCart.reduce((sum, burger) => sum += burger.price, 0);
+            const cartSum = allItemsInCart.reduce((sum, burger) => sum += burger.finalPrice, 0);
             return {
                 ...state,
                 items: actualObj,
                 totalCount: allItemsInCart.length,
                 totalPrice: cartSum,
             };
+
+            case 'EMPTY_TRASH':
+                return {
+                    items: {},
+                    totalPrice: 0,
+                    totalCount: 0,
+                }
         default:
             return state;
     };
