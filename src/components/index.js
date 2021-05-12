@@ -8,6 +8,7 @@ import BurgerCardLoading from './BurgerCard/BurgerCardLoading';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
 import CartItem from './CartItem';
+import ModalDeleteCart from './ModalDeleteCart';
 
 export {
     Button,
@@ -20,4 +21,5 @@ export {
     Footer,
     ScrollToTop,
     CartItem,
+    ModalDeleteCart,
 };
