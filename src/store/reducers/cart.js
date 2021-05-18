@@ -28,6 +28,12 @@ const cart = (state = initialState, action) => {
                     totalPrice: 0,
                     totalCount: 0,
                 }
+            case 'DELETE_GROUP_BURGERS':
+                return {
+                    items: {},
+                    totalPrice: 0,
+                    totalCount: 0,
+                }
         default:
             return state;
     };

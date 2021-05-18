@@ -14,7 +14,7 @@ const nameSort = [
     { name: 'алфавиту', type: 'name' },
 ];
 
-const Home = () => {
+const Home = React.memo(() => {
     const { isLoaded, burgers, sortBy, category, cartItems } = useSelector(state => { // mapState
         return {
             isLoaded: state.burgersReducer.isLoaded,
@@ -39,9 +39,9 @@ const Home = () => {
         dispatch(setSort(typeSort));
     }, [dispatch]);
 
-    const addItemToCart = (burgerObj) => {
+    const addItemToCart = React.useCallback((burgerObj) => {
         dispatch(addBurgerToCart(burgerObj));
-    };
+    }, [dispatch]);
 
     return (
         <div className="container">
@@ -83,6 +83,6 @@ const Home = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Home;

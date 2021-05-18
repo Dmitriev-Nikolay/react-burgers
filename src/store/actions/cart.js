@@ -6,3 +6,7 @@ export const addBurgerToCart = (burger) => ({
 export const clearCart = () => ({
     type: 'EMPTY_TRASH',
 });
+
+export const deleteBurgersGroup = () => ({
+    type: 'DELETE_GROUP_BURGERS',
+});

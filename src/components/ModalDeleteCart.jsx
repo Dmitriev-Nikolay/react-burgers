@@ -23,17 +23,22 @@ const ModalDeleteCart = (props) => {
         setOpen(false);
     };
 
-    const styleDeleteButton = {
-        borderRadius: 30,
-        border: 0,
-        height: 48,
-        padding: '16px 25px',
-        textTransform: 'none',
+    const styles = {
+        styleDeleteButton: {
+            borderRadius: 30,
+            border: 0,
+            height: 48,
+            padding: '16px 25px',
+            textTransform: 'none',
+        },
+        resize: {
+            fontSize: 16,
+        },
     };
 
     return (
         <div>
-            <Button style={ styleDeleteButton } onClick={ handleClickOpen }>
+            <Button style={ styles.styleDeleteButton } onClick={ handleClickOpen }>
                 <div className="cart__clear">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.5 5H4.16667H17.5" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
@@ -50,15 +55,16 @@ const ModalDeleteCart = (props) => {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">{ "Удаление товаров" }</DialogTitle>
+                <DialogTitle id="alert-dialog-title">Удаление товаров</DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
                         Вы действительно хотите удалить все товары из корзины?
                     </DialogContentText>
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={ handleCloseYes }>Да</Button>
-                    <Button onClick={ handleCloseNo }>Нет</Button>
+                <DialogActions
+                >
+                    <Button style={ styles.resize } onClick={ handleCloseYes }>Да</Button>
+                    <Button style={ styles.resize } onClick={ handleCloseNo }>Нет</Button>
                 </DialogActions>
             </Dialog>
         </div>

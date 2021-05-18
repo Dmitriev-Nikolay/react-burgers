@@ -1,6 +1,6 @@
 import React from 'react';
 import BurgerLogo from '../assets/img/burger-logo.svg';
-import MyLogo from '../assets/img/My_logo.png';
+import myLogo from '../assets/img/My_logo.png';
 
 const Footer = () => {
     const scrollToTop = () => {
@@ -25,7 +25,7 @@ const Footer = () => {
                 </div>
                 <div className="dev">
                     <span className="who-dev">Разработка приложения:</span>
-                    <a href="https://github.com/Dmitriev-Nikolay"><img width="40" src= { MyLogo } alt="Burger logo" /></a>
+                    <a href="https://github.com/Dmitriev-Nikolay"><img width="40" src= { myLogo } alt="Burger logo" /></a>
                 </div>
             </div>
             <div className="footer-copyright">

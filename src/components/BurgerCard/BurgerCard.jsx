@@ -2,9 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import StarIcon from '../../assets/img/star.svg';
+import starIcon from '../../assets/img/star.svg';
+import defaultBurger from '../../assets/img/default-burger.jpg';
 
-function BurgerCard(props) {
+
+const BurgerCard = React.memo((props) => {
     const { id, imageUrl, name, types, sizes, price, rating, onClickAddBurger, burgerCountInСart } = props; // { ...burger }
 
     const [activeType, setActiveType] = React.useState(types[0]); // по умолчанию выбран первый
@@ -19,7 +21,7 @@ function BurgerCard(props) {
         "M": 50, 
         "XL": 100,
     };
-
+    
     const finalPrice = !price ? 0 : price + Object.values(sizeNames)[activeSize];
 
     const onSelectedSize = (i) => {
@@ -42,9 +44,10 @@ function BurgerCard(props) {
         <div className="burger-block">
             <img className="burger-block__image"
                 src={ imageUrl }
-                alt={ name } />
+                alt={ name } 
+            />
             <div className="burger-block__rating">
-                <img width="20" src={ StarIcon } alt="Star icon" />
+                <img width="20" src={ starIcon } alt="Star icon" />
                 { rating }
             </div>
             <h4 className="burger-block__title">{ name }</h4>
@@ -108,7 +111,7 @@ function BurgerCard(props) {
             </div>
         </div>
     );
-};
+});
 
 BurgerCard.propTypes = {
     id: PropTypes.number.isRequired,
@@ -123,11 +126,13 @@ BurgerCard.propTypes = {
 };
 
 BurgerCard.defaultProps = {
+    imageUrl: defaultBurger,
     name: '...Бургерок...',
     types: [],
     sizes: [],
     price: 0,
     finalPrice: 0,
+    rating: 0,
 };
 
 export default BurgerCard;

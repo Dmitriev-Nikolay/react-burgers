@@ -9,47 +9,27 @@ import { CartEmpty } from '../pages/';
 
 const Cart = () => {
     const { items: cartItems, totalPrice, totalCount } = useSelector(({ cartReducer }) => cartReducer);
+    
+    console.log(cartItems);
+    console.log(Object.keys(cartItems));
+    let addedBurgersToCart = [];
+    for (let i = 0; i < Object.keys(cartItems).length; i++) {
+            addedBurgersToCart = cartItems[Object.keys(cartItems)[i]].reduce((acc, el) => {
+            acc.push(el);
+            return acc;
+        }, addedBurgersToCart);
+    };
 
-    const dispatch = useDispatch(); // mapActions
-
+    console.log(addedBurgersToCart);
+    
     // const addedBurgers = Object.keys(cartItems).map(key => {
     //     return cartItems[key][0];
     // });
+    const dispatch = useDispatch(); // mapActions
 
-    // const add = (obj) => {
-    //     let gg = [];
-    //     for (let i = 0; i <= Object.keys(obj).length; i++) {
-    //         gg = obj[`${i}`].reduce((acc, el) => {
-    //             acc.concat(el);
-    //             gg = acc;
-    //         }, [])
-    //         return gg;
-    //     }
-    // }
-    // console.log(add(cartItems));
-
-    // const addedBurger = (arr) => {
-    //     const allAded = new Set();
-    //     for(let key in arr) {
-    //         console.log(allAded.add(Object.values(arr))); 
-    //     }
-    // }
-
-    let added = [];
-    const add = obj => {
-        for (let i = 0; i < Object.keys(obj).length; i++) {
-            added = obj[Object.keys(obj)[i]].reduce((acc, el) => {
-                acc.push(el);
-                return acc;
-            }, added);
-        }
-        return added;
+    const deleteBurgersInCart = () => {
+        dispatch(clearCart());
     };
-add(cartItems);
-
-const deleteBurgersInCart = () => {
-    dispatch(clearCart());
-};
 
     return (
         <div className="content">
@@ -67,35 +47,26 @@ const deleteBurgersInCart = () => {
                                             <path d="M4.78002 4.99999H16.3334L15.2134 10.5933C15.1524 10.9003 14.9854 11.176 14.7417 11.3722C14.4979 11.5684 14.1929 11.6727 13.88 11.6667H6.83335C6.50781 11.6694 6.1925 11.553 5.94689 11.3393C5.70128 11.1256 5.54233 10.8295 5.50002 10.5067L4.48669 2.82666C4.44466 2.50615 4.28764 2.21182 4.04482 1.99844C3.80201 1.78505 3.48994 1.66715 3.16669 1.66666H1.66669" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                     Корзина</h2>
-                                    {/* <div className="cart__clear"> */}
-                                        {/* <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M2.5 5H4.16667H17.5" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                                            <path d="M6.66663 5.00001V3.33334C6.66663 2.89131 6.84222 2.46739 7.15478 2.15483C7.46734 1.84227 7.89127 1.66667 8.33329 1.66667H11.6666C12.1087 1.66667 12.5326 1.84227 12.8451 2.15483C13.1577 2.46739 13.3333 2.89131 13.3333 3.33334V5.00001M15.8333 5.00001V16.6667C15.8333 17.1087 15.6577 17.5326 15.3451 17.8452C15.0326 18.1577 14.6087 18.3333 14.1666 18.3333H5.83329C5.39127 18.3333 4.96734 18.1577 4.65478 17.8452C4.34222 17.5326 4.16663 17.1087 4.16663 16.6667V5.00001H15.8333Z" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                                            <path d="M8.33337 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                                            <path d="M11.6666 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg> */}
-                                        {/* <span onClick={ deleteBurgersInCart }>Очистить корзину</span> */}
-                                        <ModalDeleteCart deleteAllItems={ deleteBurgersInCart } />
-                                    {/* </div> */}
+                                    <ModalDeleteCart deleteAllItems={ deleteBurgersInCart } />
                                 </div>
                                 <div className="content__items">
                                     {
-                                        added.map((burger, index) => (
+                                        addedBurgersToCart.map((burger, index) => (
                                             <CartItem
-                                                name={burger.name}
-                                                imageBurger={burger.imageUrl}
-                                                types={burger.type}
-                                                sizes={burger.size}
-                                                price={burger.finalPrice}
-                                                key={`${burger.name}_${index}`}
+                                                name={ burger.name }
+                                                imageBurger={ burger.imageUrl }
+                                                types={ burger.type }
+                                                sizes={ burger.size }
+                                                price={ burger.finalPrice }
+                                                key={ `${ burger.id }_${ burger.name }` }
                                             />
                                         ))
                                     }
                                 </div>
                                 <div className="cart__bottom">
                                     <div className="cart__bottom-details">
-                                        <span> Всего бургеров: <b>{totalCount} шт.</b> </span>
-                                        <span> Сумма заказа: <b>{totalPrice} ₽</b> </span>
+                                        <span> Всего бургеров: <b>{ totalCount } шт.</b> </span>
+                                        <span> Сумма заказа: <b>{ totalPrice } ₽</b> </span>
                                     </div>
                                     <Link to="/">
                                         <div className="cart__bottom-buttons">
