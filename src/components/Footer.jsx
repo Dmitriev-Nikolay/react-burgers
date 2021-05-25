@@ -25,7 +25,7 @@ const Footer = () => {
                 </div>
                 <div className="dev">
                     <span className="who-dev">Разработка приложения:</span>
-                    <a href="https://github.com/Dmitriev-Nikolay"><img width="40" src= { myLogo } alt="Burger logo" /></a>
+                    <a href="https://github.com/Dmitriev-Nikolay" target="_blank" rel="noreferrer"><img width="40" src={ myLogo } alt="Burger logo" /></a>
                 </div>
             </div>
             <div className="footer-copyright">
@@ -36,10 +36,10 @@ const Footer = () => {
                 <div className="social">
                     <p>Бургерок в соцсетях</p>
                     <a href="https://github.com/Dmitriev-Nikolay" target="_blank" rel="noreferrer"><i className="fa fa-github fa-2x"></i></a>
-                    <a href="#/" target="_blank" rel="noreferrer"><i className="fa fa-youtube fa-2x"></i></a>
-                    <a href="#/" target="_blank" rel="noreferrer"><i className="fa fa-paper-plane fa-2x"></i></a>
-                    <a href="#/" target="_blank" rel="noreferrer"><i className="fa fa-facebook fa-2x"></i></a>
-                    <a href="#/" target="_blank" rel="noreferrer"><i className="fa fa-twitter fa-2x"></i></a>
+                    <a href="#/" onClick={ scrollToTop } rel="noreferrer"><i className="fa fa-youtube fa-2x"></i></a>
+                    <a href="#/" onClick={ scrollToTop } rel="noreferrer"><i className="fa fa-paper-plane fa-2x"></i></a>
+                    <a href="#/" onClick={ scrollToTop } rel="noreferrer"><i className="fa fa-facebook fa-2x"></i></a>
+                    <a href="#/" onClick={ scrollToTop } rel="noreferrer"><i className="fa fa-twitter fa-2x"></i></a>
                 </div>
             </div>
         </div>

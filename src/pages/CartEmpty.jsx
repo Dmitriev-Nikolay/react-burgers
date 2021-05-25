@@ -12,7 +12,7 @@ const CartEmpty = () => {
                         Пока вы еще ничего не добавили в корзину.<br />
                         Для того, чтобы заказать бургеры, перейдите на главную страницу.
                     </p>
-                    <img src={ emptyCart } alt="Empty cart" />
+                    <img src={ emptyCart } alt="Empty cart" width="300" height="220" />
                     <Link to="/">
                         <div className="cart__bottom-buttons">
                             <div className="button button--outline button--add go-back-btn">
