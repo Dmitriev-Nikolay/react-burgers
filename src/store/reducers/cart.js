@@ -10,10 +10,12 @@ const cart = (state = initialState, action) => {
         case 'ADD_BURGER_TO_CART':
             const actualObj = {
                 ...state.items,
-                // [`${action.payload.id}_${action.payload.finalPrice}_${action.payload.type}`]: !state.items[action.payload.id]
                 [action.payload.id]: !state.items[action.payload.id]
                     ? [action.payload]
                     : [...state.items[action.payload.id], action.payload],
+                // [`${action.payload.id}_${action.payload.finalPrice}_${action.payload.type}`]: !(state.items[action.payload.id] && state.items[action.payload.finalPrice] && state.items[action.payload.type])
+                //     ? [action.payload]
+                //     : [...state.items[`${action.payload.id}_${action.payload.finalPrice}_${action.payload.type}`], action.payload],
             };
 
             // const allItemsInCart = Object.values(actualObj).map(i => Object.values(i));

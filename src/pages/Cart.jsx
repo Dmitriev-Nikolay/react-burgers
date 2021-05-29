@@ -14,13 +14,34 @@ const Cart = () => {
     for (let i = 0; i < Object.keys(cartItems).length; i++) {
             addedBurgersToCart = cartItems[Object.keys(cartItems)[i]].reduce((arrAdded, added) => {
                 arrAdded.push(added);
+                // console.log(added.id);
+                // let temp = []
+                // if (added.id[0] === added.id[1] && added.finalPrice[0] === added.finalPrice[1]) {
+                //     temp = [];
+                //     temp.push(added)
+                //     console.log(temp);
+                // }
+                // arrAdded.push(temp)
             return arrAdded;
         }, addedBurgersToCart);
     };
 
+    // console.log(Object.values(cartItems).flat(1));
+
+    // Object.values(cartItems).flat(1).forEach(function (a, i) {
+    //     a.id[i] === a.id[i] in this || addedBurgersToCart.push(this[a] = []);
+    //     this[a].push(a);
+    // }, Object.create(null));
+    
+    // console.log(addedBurgersToCart);
+
     // const addedBurgersToCart = Object.keys(cartItems).map((key, i) => {
     //     return cartItems[key][i];
     // });
+
+    console.log(cartItems);
+    console.log(Object.keys(cartItems)[0]); // 1
+    console.log(cartItems[1]);
 
     const dispatch = useDispatch(); // mapActions
 
@@ -55,9 +76,10 @@ const Cart = () => {
                                                 imageBurger={ burger.imageUrl }
                                                 types={ burger.type }
                                                 sizes={ burger.size }
-                                                // price={ Object.values(cartItems)[index].length * burger.finalPrice }
+                                                // price={ Object.values(addedBurgersToCart)[index].length * burger.finalPrice }
                                                 key={ `${ burger.id }_${ index }_${ burger.name }` }
-                                                // quantityItemInCart={ Object.values(cartItems)[index].length }
+                                                // quantityItemInCart={ Object.values(addedBurgersToCart)[index].length }
+                                                // quantityItemInCart={ Object.keys(cartItems).length }
                                             />
                                         ))
                                     }
