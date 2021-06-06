@@ -67,7 +67,8 @@ const Home = React.memo(() => {
                                 <BurgerCard
                                     key={ burger.id }
                                     { ...burger }
-                                    burgerCountInСart={ cartItems[burger.id] && cartItems[burger.id].length }                                    onClickAddBurger={ addItemToCart }
+                                    burgerCountInСart={ cartItems[burger.id] && cartItems[burger.id].length } 
+                                    onClickAddBurger={ addItemToCart }
                                 // imageUrl={ burger.imageUrl }
                                 // name={ burger.name }
                                 // types={ burger.types }
