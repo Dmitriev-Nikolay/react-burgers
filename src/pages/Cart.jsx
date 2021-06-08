@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { addBurgerToCart } from '../store/actions/cart';
+
 import { clearCart } from '../store/actions/cart';
 
 import { CartItem, ModalDeleteCart } from '../components';
@@ -19,7 +21,7 @@ const Cart = () => {
         // };
         // let add = [];
         addedToCart = Object.values(cartItems).flat(1).reduce((arrAdded, burger) => {
-            const idx = arrAdded.findIndex(elem => elem.length > 0 && elem[0].finalPrice === burger.finalPrice);
+            const idx = arrAdded.findIndex(elem => elem.length > 0 && elem[0].finalPrice === burger.finalPrice && elem[0].type === burger.type && elem[0].name === burger.name);
             if (idx !== -1) {
                 arrAdded[idx].push(burger);
             } else {
@@ -48,10 +50,28 @@ const Cart = () => {
     // console.log(cartItems);
     // console.log(addedToCart);
     // console.log(Object.keys(addedToCart));
-
     const dispatch = useDispatch(); // mapActions
 
-    const deleteBurgersInCart = () => {
+    const deleteCartItem = (name, price, types) => {
+        let removeCartItem = [];
+        removeCartItem = Object.values(cartItems).flat(1).reduce((arrAdded, burger) => {
+            const idx = arrAdded.findIndex(elem => elem.length > 0 && elem[0].finalPrice === burger.finalPrice && elem[0].type === burger.type && elem[0].name === burger.name);
+            if (idx !== -1) {
+                arrAdded[idx].pop(burger);
+            } else {
+                arrAdded.pop([burger]);
+            }
+            return arrAdded;
+        }, []);
+        console.log(removeCartItem);
+        // dispatch(addBurgerToCart(burgersAfterDeleteGroupItem))
+        console.log(name);
+        console.log(price);
+        console.log(types);
+    };
+
+
+    const deleteAllBurgersInCart = () => {
         dispatch(clearCart());
     };
 
@@ -72,7 +92,7 @@ const Cart = () => {
                                         </svg>
                                         Корзина
                                     </h2>
-                                    <ModalDeleteCart deleteAllItems={ deleteBurgersInCart } />
+                                    <ModalDeleteCart deleteAllItems={ deleteAllBurgersInCart } />
                                 </div>
                                 <div className="content__items">
                                     {
@@ -85,6 +105,7 @@ const Cart = () => {
                                                 price={ addedToCart[index].length * addedToCart[index][0].finalPrice }
                                                 key={ `${ arrUniqBurgers[0].id }_${ index }_${ arrUniqBurgers[0].name }` }
                                                 quantityItemInCart={ addedToCart[index].length }
+                                                deleteGroupCartItem={ deleteCartItem }
                                             />
                                         ))
                                     }
