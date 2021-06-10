@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { SET_BURGERS, SET_LOADED } from './constants';
 
 export const axiosBurgers = (sortBy, category) => dispatch => {
     dispatch(setLoaded(false));
@@ -9,11 +10,11 @@ export const axiosBurgers = (sortBy, category) => dispatch => {
 };
 
 export const setBurgers = (items) => ({
-    type: 'SET_BURGERS',
+    type: SET_BURGERS,
     payload: items,
 });
 
 export const setLoaded = (status) => ({
-    type: 'SET_LOADED',
+    type: SET_LOADED,
     payload: status,
 });

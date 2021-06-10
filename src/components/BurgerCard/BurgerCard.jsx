@@ -5,10 +5,9 @@ import PropTypes from 'prop-types';
 import starIcon from '../../assets/img/star.svg';
 import defaultBurger from '../../assets/img/default-burger.jpg';
 
-
 const BurgerCard = React.memo((props) => {
     const { id, imageUrl, name, types, sizes, price, rating, onClickAddBurger, burgerCountInСart } = props; // { ...burger }
-
+    
     const [activeType, setActiveType] = React.useState(types[0]); // по умолчанию выбран первый
     const typeNames = ["Классическая булочка", "Булочка с кунжутом"];
 

@@ -1,3 +1,5 @@
+import { SET_SORT, SET_CATEGORY } from '../actions/constants';
+
 const initialState = {
     sortBy: 'rating',
     category: null,
@@ -5,12 +7,12 @@ const initialState = {
 
 const filters = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_SORT': 
+        case SET_SORT: 
             return {
                 ...state,
                 sortBy: action.payload,
             };
-        case 'SET_CATEGORY': 
+        case SET_CATEGORY: 
             return {
                 ...state,
                 category: action.payload,

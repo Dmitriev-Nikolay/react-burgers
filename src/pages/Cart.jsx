@@ -2,9 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { addBurgerToCart } from '../store/actions/cart';
-
-import { clearCart } from '../store/actions/cart';
+import { clearCart, deleteBurgersGroup, addItem, deleteItem } from '../store/actions/cart';
 
 import { CartItem, ModalDeleteCart } from '../components';
 import { CartEmpty } from '../pages/';
@@ -12,7 +10,7 @@ import { CartEmpty } from '../pages/';
 const Cart = () => {
     const { items: cartItems, totalPrice, totalCount } = useSelector(({ cartReducer }) => cartReducer);
 
-    let addedToCart = [];
+    // let addedToCart = [];
         // for (let i = 0; i < Object.keys(cartItems).length; i++) {
         //         addedBurgersToCart = cartItems[Object.keys(cartItems)[i]].reduce((arrAdded, added, i) => {
         //         arrAdded.push(added);
@@ -20,7 +18,7 @@ const Cart = () => {
         //     }, addedBurgersToCart);
         // };
         // let add = [];
-        addedToCart = Object.values(cartItems).flat(1).reduce((arrAdded, burger) => {
+        let addedToCart = Object.values(cartItems).flat(1).reduce((arrAdded, burger) => {
             const idx = arrAdded.findIndex(elem => elem.length > 0 && elem[0].finalPrice === burger.finalPrice && elem[0].type === burger.type && elem[0].name === burger.name);
             if (idx !== -1) {
                 arrAdded[idx].push(burger);
@@ -41,38 +39,28 @@ const Cart = () => {
     //         return arrAdded;
     //     }, addedBurgersToCart);
     // };
+// console.log(cartItems);
+// console.log(Object.keys(cartItems));
+//     let addedBurgersToCart = Object.keys(cartItems).map((key, i) => {
+//         return cartItems[key][0];
+//     });
 
-    // let addedBurgersToCart = Object.keys(cartItems).map((key, i) => {
-    //     return cartItems[key][i];
-    // });
-
-    // console.log(addedBurgersToCart);
-    // console.log(cartItems);
-    // console.log(addedToCart);
-    // console.log(Object.keys(addedToCart));
     const dispatch = useDispatch(); // mapActions
-
-    const deleteCartItem = (name, price, types) => {
-        let removeCartItem = [];
-        removeCartItem = Object.values(cartItems).flat(1).reduce((arrAdded, burger) => {
-            const idx = arrAdded.findIndex(elem => elem.length > 0 && elem[0].finalPrice === burger.finalPrice && elem[0].type === burger.type && elem[0].name === burger.name);
-            if (idx !== -1) {
-                arrAdded[idx].pop(burger);
-            } else {
-                arrAdded.pop([burger]);
-            }
-            return arrAdded;
-        }, []);
-        console.log(removeCartItem);
-        // dispatch(addBurgerToCart(burgersAfterDeleteGroupItem))
-        console.log(name);
-        console.log(price);
-        console.log(types);
-    };
-
 
     const deleteAllBurgersInCart = () => {
         dispatch(clearCart());
+    };
+
+    const deleteCartItemGroup = ({ id, priceItem, type }) => {
+        dispatch(deleteBurgersGroup({ id, priceItem, type }));
+    };
+
+    const addCartItem = (burger) => {
+        dispatch(addItem(burger));
+    };
+
+    const deleteCartItem = ({ id, priceItem, type }) => {
+        dispatch(deleteItem({ id, priceItem, type }));
     };
 
     return (
@@ -98,16 +86,33 @@ const Cart = () => {
                                     {
                                         addedToCart.map((arrUniqBurgers, index) => (
                                             <CartItem
+                                                burger={ arrUniqBurgers[0] }
+                                                id={ arrUniqBurgers[0].id }
                                                 name={ arrUniqBurgers[0].name }
                                                 imageBurger={ arrUniqBurgers[0].imageUrl }
-                                                types={ arrUniqBurgers[0].type }
-                                                sizes={ arrUniqBurgers[0].size }
-                                                price={ addedToCart[index].length * addedToCart[index][0].finalPrice }
+                                                type={ arrUniqBurgers[0].type }
+                                                size={ arrUniqBurgers[0].size }
+                                                priceGroup={ addedToCart[index].length * addedToCart[index][0].finalPrice }
+                                                priceItem={ addedToCart[index][0].finalPrice }
                                                 key={ `${ arrUniqBurgers[0].id }_${ index }_${ arrUniqBurgers[0].name }` }
                                                 quantityItemInCart={ addedToCart[index].length }
-                                                deleteGroupCartItem={ deleteCartItem }
+                                                onDeleteGroupCartItem={ deleteCartItemGroup }
+                                                onAddCartItem={ addCartItem }
+                                                onDeleteCartItem={ deleteCartItem }
                                             />
                                         ))
+                                        // addedBurgersToCart.map((burger) => (
+                                        //     <CartItem
+                                        //         name={ burger.name }
+                                        //         imageBurger={ burger.imageUrl }
+                                        //         types={ burger.type }
+                                        //         sizes={ burger.size }
+                                        //         price={ burger.finalPrice }
+                                        //         key={ `${ burger.id }_${ burger.name }` }
+                                        //         quantityItemInCart={ cartItems[`${burger.id}${burger.finalPrice}${burger.type}`].length }
+                                        //         onDeleteGroupCartItem={ deleteCartItem }
+                                        //     />
+                                        // ))
                                     }
                                 </div>
                                 <div className="cart__bottom">
@@ -124,7 +129,7 @@ const Cart = () => {
                                                 <span>Назад к бургерам</span>
                                             </div>
                                             <div className="button pay-btn">
-                                                <span>Оплатить сейчас</span>
+                                                <span>Сделать заказ</span>
                                             </div>
                                         </div>
                                     </Link>

@@ -25,7 +25,9 @@ const Footer = () => {
                 </div>
                 <div className="dev">
                     <span className="who-dev">Разработка приложения:</span>
-                    <a href="https://github.com/Dmitriev-Nikolay" target="_blank" rel="noreferrer"><img width="40" src={ myLogo } alt="Burger logo" /></a>
+                    <a href="https://github.com/Dmitriev-Nikolay" target="_blank" rel="noreferrer">
+                        <img width="40" src={ myLogo } alt="My logo" />
+                    </a>
                 </div>
             </div>
             <div className="footer-copyright">

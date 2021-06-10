@@ -15,14 +15,13 @@ const nameSort = [
 ];
 
 const Home = React.memo(() => {
-    const { isLoaded, burgers, sortBy, category, cartItems, addedBurgersToCart } = useSelector(state => { // mapState
+    const { isLoaded, burgers, sortBy, category, cartItems } = useSelector(state => { // mapState
         return {
             isLoaded: state.burgersReducer.isLoaded,
             burgers: state.burgersReducer.items,
             sortBy: state.filtersReducer.sortBy,
             category: state.filtersReducer.category,
             cartItems: state.cartReducer.items,
-            addedBurgersToCart: state.cartReducer.addedBurgersToCart,
         };
     });
 
@@ -67,7 +66,7 @@ const Home = React.memo(() => {
                                 <BurgerCard
                                     key={ burger.id }
                                     { ...burger }
-                                    burgerCountInСart={ cartItems[burger.id] && cartItems[burger.id].length } 
+                                    burgerCountInСart={ cartItems[burger.id] && cartItems[burger.id].length }
                                     onClickAddBurger={ addItemToCart }
                                 // imageUrl={ burger.imageUrl }
                                 // name={ burger.name }
