@@ -11,39 +11,26 @@ const Cart = () => {
     const { items: cartItems, totalPrice, totalCount } = useSelector(({ cartReducer }) => cartReducer);
 
     // let addedToCart = [];
-        // for (let i = 0; i < Object.keys(cartItems).length; i++) {
-        //         addedBurgersToCart = cartItems[Object.keys(cartItems)[i]].reduce((arrAdded, added, i) => {
-        //         arrAdded.push(added);
-        //         return arrAdded;
-        //     }, addedBurgersToCart);
-        // };
-        // let add = [];
-        let addedToCart = Object.values(cartItems).flat(1).reduce((arrAdded, burger) => {
-            const idx = arrAdded.findIndex(elem => elem.length > 0 && elem[0].finalPrice === burger.finalPrice && elem[0].type === burger.type && elem[0].name === burger.name);
-            if (idx !== -1) {
-                arrAdded[idx].push(burger);
-            } else {
-                arrAdded.push([burger]);
-            }
-            return arrAdded;
-        }, []);
-    // let addedBurgersToCart = [];
     // for (let i = 0; i < Object.keys(cartItems).length; i++) {
     //         addedBurgersToCart = cartItems[Object.keys(cartItems)[i]].reduce((arrAdded, added, i) => {
-    //             // arrAdded.indexOf( added.id ) != -1
-    //             // // arrAdded.includes(added) 
-    //             // ? arrAdded.push([added])
-    //             // : arrAdded.push(added);
-    //             // // : [...arrAdded, added];
-    //             arrAdded.push(added);
+    //         arrAdded.push(added);
     //         return arrAdded;
     //     }, addedBurgersToCart);
     // };
-// console.log(cartItems);
-// console.log(Object.keys(cartItems));
-//     let addedBurgersToCart = Object.keys(cartItems).map((key, i) => {
-//         return cartItems[key][0];
-//     });
+
+    // let addedToCart = Object.values(cartItems).flat(1).reduce((arrAdded, burger) => {
+    //     const idx = arrAdded.findIndex(elem => elem.length > 0 && elem[0].finalPrice === burger.finalPrice && elem[0].type === burger.type && elem[0].name === burger.name);
+    //     if (idx !== -1) {
+    //         arrAdded[idx].push(burger);
+    //     } else {
+    //         arrAdded.push([burger]);
+    //     }
+    //     return arrAdded;
+    // }, []);
+
+    // let addedBurgersToCart = Object.keys(cartItems).map((burgerGroup) => {
+    //     return cartItems[burgerGroup][0];
+    // });
 
     const dispatch = useDispatch(); // mapActions
 
@@ -55,12 +42,12 @@ const Cart = () => {
         dispatch(deleteBurgersGroup({ id, priceItem, type }));
     };
 
-    const addCartItem = (burger) => {
-        dispatch(addItem(burger));
+    const addCartItem = (idGroupForAdd) => {
+        dispatch(addItem(idGroupForAdd));
     };
 
-    const deleteCartItem = ({ id, priceItem, type }) => {
-        dispatch(deleteItem({ id, priceItem, type }));
+    const deleteCartItem = (idGroupForDelete) => {
+        dispatch(deleteItem(idGroupForDelete));
     };
 
     return (
@@ -84,18 +71,34 @@ const Cart = () => {
                                 </div>
                                 <div className="content__items">
                                     {
-                                        addedToCart.map((arrUniqBurgers, index) => (
+                                        Object.values(cartItems).map((arrUniqBurgers, index, cartItems) => (
                                             <CartItem
+                                                // 1 вариант 
+                                                // burger={ arrUniqBurgers[0] }
+                                                // id={ arrUniqBurgers[0].id }
+                                                // name={ arrUniqBurgers[0].name }
+                                                // imageBurger={ arrUniqBurgers[0].imageUrl }
+                                                // type={ arrUniqBurgers[0].type }
+                                                // size={ arrUniqBurgers[0].size }
+                                                // priceGroup={ addedToCart[index].length * addedToCart[index][0].finalPrice }
+                                                // priceItem={ addedToCart[index][0].finalPrice }
+                                                // key={ `${ arrUniqBurgers[0].id }_${ index }_${ arrUniqBurgers[0].name }` }
+                                                // quantityItemInCart={ addedToCart[index].length }
+                                                // onDeleteGroupCartItem={ deleteCartItemGroup }
+                                                // onAddCartItem={ addCartItem }
+                                                // onDeleteCartItem={ deleteCartItem }
+                                                
+                                                // 2 вариант 
                                                 burger={ arrUniqBurgers[0] }
                                                 id={ arrUniqBurgers[0].id }
                                                 name={ arrUniqBurgers[0].name }
                                                 imageBurger={ arrUniqBurgers[0].imageUrl }
                                                 type={ arrUniqBurgers[0].type }
                                                 size={ arrUniqBurgers[0].size }
-                                                priceGroup={ addedToCart[index].length * addedToCart[index][0].finalPrice }
-                                                priceItem={ addedToCart[index][0].finalPrice }
+                                                priceGroup={ cartItems[index].length * cartItems[index][0].finalPrice }
+                                                priceItem={ cartItems[index][0].finalPrice }
                                                 key={ `${ arrUniqBurgers[0].id }_${ index }_${ arrUniqBurgers[0].name }` }
-                                                quantityItemInCart={ addedToCart[index].length }
+                                                quantityItemInCart={ cartItems[index].length }
                                                 onDeleteGroupCartItem={ deleteCartItemGroup }
                                                 onAddCartItem={ addCartItem }
                                                 onDeleteCartItem={ deleteCartItem }

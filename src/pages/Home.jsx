@@ -15,13 +15,15 @@ const nameSort = [
 ];
 
 const Home = React.memo(() => {
-    const { isLoaded, burgers, sortBy, category, cartItems } = useSelector(state => { // mapState
+    const { isLoaded, burgers, sortBy, category, cartItems, countItemInCart, groupUniqId } = useSelector(state => { // mapState
         return {
             isLoaded: state.burgersReducer.isLoaded,
             burgers: state.burgersReducer.items,
+            cartItems: state.cartReducer.items,
             sortBy: state.filtersReducer.sortBy,
             category: state.filtersReducer.category,
-            cartItems: state.cartReducer.items,
+            countItemInCart: state.cartReducer.countItemInCart,
+            groupUniqId: state.cartReducer.groupUniqId,
         };
     });
 
@@ -42,7 +44,7 @@ const Home = React.memo(() => {
     const addItemToCart = React.useCallback((burgerObj) => {
         dispatch(addBurgerToCart(burgerObj));
     }, [dispatch]);
-
+    
     return (
         <div className="container">
             <div className="content__top">
@@ -61,20 +63,13 @@ const Home = React.memo(() => {
             <div className="content__items">
                 {
                     isLoaded
-                        ? burgers.map((burger) => {
+                        ? burgers.map((burger, i) => {
                             return (
                                 <BurgerCard
-                                    key={ burger.id }
+                                    key={ `${ burger.id }_${ i }` }
                                     { ...burger }
-                                    burgerCountInСart={ cartItems[burger.id] && cartItems[burger.id].length }
+                                    burgerCountInСart={ cartItems[groupUniqId] && cartItems[groupUniqId].length && cartItems[burger.id] }
                                     onClickAddBurger={ addItemToCart }
-                                // imageUrl={ burger.imageUrl }
-                                // name={ burger.name }
-                                // types={ burger.types }
-                                // sizes={ burger.sizes }
-                                // price={ burger.price }
-                                // category={ burger.category }
-                                // rating={ burger.rating }
                                 />
                             )
                         })

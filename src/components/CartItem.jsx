@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 const CartItem = (props) => {
     const { burger, id, imageBurger, name, type, size, priceGroup, priceItem, quantityItemInCart, onDeleteGroupCartItem, onAddCartItem, onDeleteCartItem } = props;
@@ -8,13 +9,13 @@ const CartItem = (props) => {
     };
 
     const handleAddItemInGroup = () => {
-        onAddCartItem(burger);
-        console.log(burger);
+        // onAddCartItem({ id, imageBurger, name, priceItem, size, type });
+        onAddCartItem(`${ id }${ priceItem }${ type }`);
     };
 
     const handleRemoveItemInGroup = () => {
-        onDeleteCartItem({ id, priceItem, type })
-        console.log({ id, priceItem, type });
+        // onDeleteCartItem(burger);
+        onDeleteCartItem(`${ id }${ priceItem }${ type }`);
     };
     
     return (

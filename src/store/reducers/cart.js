@@ -5,16 +5,18 @@ const initialState = {
     totalPrice: 0,
     totalCount: 0,
     countItemInCart: 0,
+    groupUniqId: null,
 };
 
 const cart = (state = initialState, action) => {
     switch (action.type) {
         case ADD_BURGER_TO_CART:
-            const actualObj = {
+            let uniqGroupId = `${ action.payload.id }${ action.payload.finalPrice }${ action.payload.type }`;
+            const newItems = {
                 ...state.items,
-                [action.payload.id]: !state.items[action.payload.id]
+                [uniqGroupId]: !state.items[uniqGroupId]
                     ? [action.payload]
-                    : [...state.items[action.payload.id], action.payload],
+                    : [...state.items[uniqGroupId], action.payload],
 
                 // [`${action.payload.id}${action.payload.finalPrice}${action.payload.type}`]: !state.items[`${action.payload.id}${action.payload.finalPrice}${action.payload.type}`]
                 //     ? [action.payload]
@@ -24,18 +26,26 @@ const cart = (state = initialState, action) => {
                 //     ? [action.payload]
                 //     : [...state.items[`${action.payload.id}${action.payload.finalPrice}${action.payload.type}`], action.payload],
             };
-
             // const allItemsInCart = Object.values(actualObj).map(i => Object.values(i));
             // const cartSum = allItemsInCart.reduce((sum, arrBurgers, i) => sum += arrBurgers[i].finalPrice * arrBurgers.length, 0);
 
-            const allItemsInCart = [].concat.apply([], Object.values(actualObj));
+            const allItemsInCart = [].concat.apply([], Object.values(newItems));
+            const currentItemsInCart = allItemsInCart.filter((burger) => burger.id === action.payload.id);
+            // const currentItemsInCart = allItemsInCart.reduce((sum, burger) => {
+            //     if (burger.id === action.payload.id) {
+            //         sum += 1;
+            //     };
+            //     return sum;
+            // }, 0);
             const cartSum = allItemsInCart.reduce((sum, burger) => sum += burger.finalPrice, 0);
 
             return {
                 ...state,
-                items: actualObj,
+                items: newItems,
                 totalCount: allItemsInCart.length,
                 totalPrice: cartSum,
+                countItemInCart: currentItemsInCart.length,
+                groupUniqId: uniqGroupId,
             };
 
         case EMPTY_TRASH:
@@ -47,45 +57,41 @@ const cart = (state = initialState, action) => {
 
         case DELETE_GROUP_BURGERS:
             const copyItemsForDeleteGroup = { ...state.items };
-            const itemsAfterDelete = Object.values(copyItemsForDeleteGroup).flat(1).filter((burger) => burger.id !== action.payload.id || burger.finalPrice !== action.payload.priceItem || burger.type !== action.payload.type);
-            const sumDeleted = state.totalPrice - itemsAfterDelete.reduce((sum, burger) => sum += burger.finalPrice, 0);
-            const countAfterDeletionGroup = itemsAfterDelete.reduce((counts) => counts += 1, 0);
+
+            // const itemsAfterDelete = Object.values(copyItemsForDeleteGroup).flat(1).filter((burger) => burger.id !== action.payload.id || burger.finalPrice !== action.payload.priceItem || burger.type !== action.payload.type);
+            // const sumDeleted = state.totalPrice - itemsAfterDelete.reduce((sum, burger) => sum += burger.finalPrice, 0);
+            // const countAfterDeletionGroup = itemsAfterDelete.reduce((counts) => counts += 1, 0);
+
+            const countAfterDeletionGroup = state.totalCount - copyItemsForDeleteGroup[`${ action.payload.id }${ action.payload.priceItem }${ action.payload.type }`].reduce((counts) => counts += 1, 0);
+            const sumDeleted = copyItemsForDeleteGroup[`${ action.payload.id}${ action.payload.priceItem }${ action.payload.type }`].reduce((sum, burger) => sum += burger.finalPrice, 0);
+            delete copyItemsForDeleteGroup[`${ action.payload.id }${ action.payload.priceItem }${ action.payload.type }`]
             return {
-                items: itemsAfterDelete,
+                ...state,
+                items: copyItemsForDeleteGroup,
                 totalPrice: state.totalPrice - sumDeleted,
                 totalCount: countAfterDeletionGroup,
             };
         case ADD_ITEM:
-            const copyItemsForAddItem = { ...state.items };
-            const itemsAfterAdd = Object.values(copyItemsForAddItem).flat(1).reduce((arrAdded, burger) => {
-                const idx = arrAdded.findIndex(elem => elem.length > 0 && elem[0].finalPrice === burger.finalPrice && elem[0].type === burger.type && elem[0].name === burger.name);
-                if (idx !== -1) {
-                    arrAdded[idx].push(burger);
-                } else {
-                    arrAdded.push([burger]);
-                }
-                return arrAdded;
-            }, []);
-            console.log(itemsAfterAdd);
-            // const news = [...state.items[action.payload.id], state.items[action.payload.id][0]];
+            const newItemsAfterAddItem = {
+                ...state.items,
+                [action.payload]: [...state.items[action.payload], state.items[action.payload][0]],
+            };
 
             return {
                 ...state,
-                // items: {...state.items, [action.payload.id]: news },
-                // items: news,
-                // totalPrice: state.totalPrice + action.payload.finalPrice,
-                // totalCount: state.totalCount + 1,
-                // items: {
-                //     [action.payload.id]: {
-                //         items: news,
-                //     },
-                // },
-                // totalPrice: state.totalPrice - sumDeleted,
-                // totalCount: countAfterDeletionGroup,
+                items: newItemsAfterAddItem,
+                totalPrice: state.totalPrice + state.items[action.payload][0].finalPrice,
+                totalCount: Object.values(newItemsAfterAddItem).flat(1).length,
             };
         case DELETE_ITEM:
+            const newItemsAfterDeleteItem = { ...state.items };
+            // state.items[action.payload].length > 0 ? [...state.items[action.payload]].slice(1) : delete state.items[action.payload],
+
             return {
                 ...state,
+                items: newItemsAfterDeleteItem,
+                totalPrice: state.items[action.payload] ? state.totalPrice - state.items[action.payload][0].finalPrice : 0,
+                totalCount: Object.values(newItemsAfterDeleteItem).flat(1).length,
             };
         default:
             return state;

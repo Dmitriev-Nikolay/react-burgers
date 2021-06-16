@@ -9,14 +9,14 @@ export const clearCart = () => ({
     type: EMPTY_TRASH,
 });
 
-export const addItem = (burgerForAdd) => ({
+export const addItem = (idburgerGroupForAdd) => ({
     type: ADD_ITEM,
-    payload: burgerForAdd,
+    payload: idburgerGroupForAdd,
 });
 
-export const deleteItem = (burgerForDelete) => ({
+export const deleteItem = (idburgerGroupForDelete) => ({
     type: DELETE_ITEM,
-    payload: burgerForDelete,
+    payload: idburgerGroupForDelete,
 });
 
 export const deleteBurgersGroup = (burger) => ({
