@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -88,8 +89,7 @@ const Cart = () => {
                                                 // onAddCartItem={ addCartItem }
                                                 // onDeleteCartItem={ deleteCartItem }
                                                 
-                                                // 2 вариант 
-                                                burger={ arrUniqBurgers[0] }
+                                                // 2 вариант
                                                 id={ arrUniqBurgers[0].id }
                                                 name={ arrUniqBurgers[0].name }
                                                 imageBurger={ arrUniqBurgers[0].imageUrl }
@@ -123,19 +123,21 @@ const Cart = () => {
                                         <span> Всего бургеров: <b>{ totalCount } шт.</b> </span>
                                         <span> Сумма заказа: <b>{ totalPrice } ₽</b> </span>
                                     </div>
-                                    <Link to="/">
-                                        <div className="cart__bottom-buttons">
+                                    <div className="cart__bottom-buttons">
+                                        <Link to="/">
                                             <div className="button button--outline button--add go-back-btn">
                                                 <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
                                                 <span>Назад к бургерам</span>
                                             </div>
+                                        </Link>
+                                        <Link to="/">
                                             <div className="button pay-btn">
-                                                <span>Сделать заказ</span>
-                                            </div>
-                                        </div>
-                                    </Link>
+                                                <span>Оформить заказ</span>
+                                            </div> 
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         )

@@ -248,12 +248,14 @@ body {
       display: flex;
       justify-content: space-around;
       margin-top: 40px;
+      align-items: center;
 
       .go-back-btn {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 210px;
+        width: 240px;
+        padding: 16px;
 
         border-color: darken($color: $gray-line, $amount: 10);
 
@@ -284,7 +286,7 @@ body {
       .pay-btn {
         font-size: 16px;
         font-weight: 600;
-        width: 210px;
+        width: 240px;
         padding: 16px;
       }
     }

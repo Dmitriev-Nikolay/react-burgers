@@ -1,9 +1,8 @@
 import React from 'react';
-import classNames from 'classnames';
 
-const CartItem = (props) => {
-    const { burger, id, imageBurger, name, type, size, priceGroup, priceItem, quantityItemInCart, onDeleteGroupCartItem, onAddCartItem, onDeleteCartItem } = props;
-    
+const CartItem = React.memo((props) => {
+    const { id, imageBurger, name, type, size, priceGroup, priceItem, quantityItemInCart, onDeleteGroupCartItem, onAddCartItem, onDeleteCartItem } = props;
+
     const handleRemoveItemsGroup = () => {
         onDeleteGroupCartItem({ id, priceItem, type });
     };
@@ -22,7 +21,6 @@ const CartItem = (props) => {
         <div className="cart__item">
             <div className="cart__item-img">
                 <img
-                    className="pizza-block__image"
                     src={ imageBurger }
                     alt="burger"
                 />
@@ -60,6 +58,6 @@ const CartItem = (props) => {
             </div>
         </div>
     );
-};
+});
 
 export default CartItem;

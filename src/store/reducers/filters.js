@@ -1,7 +1,7 @@
 import { SET_SORT, SET_CATEGORY } from '../actions/constants';
 
 const initialState = {
-    sortBy: 'rating',
+    sortBy: "rating",
     category: null,
 };
 

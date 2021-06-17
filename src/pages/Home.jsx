@@ -15,15 +15,13 @@ const nameSort = [
 ];
 
 const Home = React.memo(() => {
-    const { isLoaded, burgers, sortBy, category, cartItems, countItemInCart, groupUniqId } = useSelector(state => { // mapState
+    const { isLoaded, burgers, sortBy, category, cartItems } = useSelector(state => { // mapState
         return {
             isLoaded: state.burgersReducer.isLoaded,
             burgers: state.burgersReducer.items,
             cartItems: state.cartReducer.items,
             sortBy: state.filtersReducer.sortBy,
             category: state.filtersReducer.category,
-            countItemInCart: state.cartReducer.countItemInCart,
-            groupUniqId: state.cartReducer.groupUniqId,
         };
     });
 
@@ -44,7 +42,7 @@ const Home = React.memo(() => {
     const addItemToCart = React.useCallback((burgerObj) => {
         dispatch(addBurgerToCart(burgerObj));
     }, [dispatch]);
-    
+
     return (
         <div className="container">
             <div className="content__top">
@@ -68,7 +66,11 @@ const Home = React.memo(() => {
                                 <BurgerCard
                                     key={ `${ burger.id }_${ i }` }
                                     { ...burger }
-                                    burgerCountInСart={ cartItems[groupUniqId] && cartItems[groupUniqId].length && cartItems[burger.id] }
+                                    burgerCountInСart={ 
+                                        Object.values(cartItems).flat(1).filter(el => el.id === burger.id).length 
+                                        ? Object.values(cartItems).flat(1).filter(el => el.id === burger.id).length 
+                                        : null
+                                    }
                                     onClickAddBurger={ addItemToCart }
                                 />
                             )
