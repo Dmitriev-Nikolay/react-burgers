@@ -57,8 +57,8 @@ const BurgerCard = React.memo((props) => {
                             <li
                                 onClick={ () => onSelectedType(index) }
                                 className={ classNames({
-                                    'active': activeType === index,
-                                    'disabled': !types.includes(index),
+                                    "active": activeType === index,
+                                    "disabled": !types.includes(index),
                                 })
                                 }
                                 key={`${ type }_${ index }`}> 
