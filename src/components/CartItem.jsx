@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
 
+import { useSelector } from 'react-redux';
 
 const CartItem = React.memo((props) => {
     const { id, imageBurger, name, type, size, priceGroup, priceItem, quantityItemInCart, onDeleteGroupCartItem, onAddCartItem, onDeleteCartItem } = props;
@@ -11,7 +11,7 @@ const CartItem = React.memo((props) => {
     const handleRemoveItemsGroup = () => {
         onDeleteGroupCartItem({ id, priceItem, type });
     };
-    console.log(cartItems);
+
     const handleAddItemInGroup = () => {
         // onAddCartItem({ id, imageBurger, name, priceItem, size, type });
         onAddCartItem(`${ id }${ priceItem }${ type }`);

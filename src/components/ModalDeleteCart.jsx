@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -61,8 +62,7 @@ const ModalDeleteCart = React.memo((props) => {
                         Вы действительно хотите удалить все товары из корзины?
                     </DialogContentText>
                 </DialogContent>
-                <DialogActions
-                >
+                <DialogActions>
                     <Button style={ styles.resize } onClick={ handleCloseYes }>Да</Button>
                     <Button style={ styles.resize } onClick={ handleCloseNo }>Нет</Button>
                 </DialogActions>

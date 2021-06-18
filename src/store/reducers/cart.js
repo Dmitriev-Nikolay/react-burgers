@@ -15,24 +15,10 @@ const cart = (state = initialState, action) => {
                 [uniqGroupId]: !state.items[uniqGroupId]
                     ? [action.payload]
                     : [...state.items[uniqGroupId], action.payload],
-                // [`${action.payload.id}${action.payload.finalPrice}${action.payload.type}`]: !state.items[`${action.payload.id}${action.payload.finalPrice}${action.payload.type}`]
-                //     ? [action.payload]
-                //     : [...state.items[`${action.payload.id}${action.payload.finalPrice}${action.payload.type}`], action.payload],
-
-                // [`${action.payload.id}${action.payload.finalPrice}${action.payload.type}`]: !state.items[`${action.payload.id}${action.payload.finalPrice}${action.payload.type}`]
-                //     ? [action.payload]
-                //     : [...state.items[`${action.payload.id}${action.payload.finalPrice}${action.payload.type}`], action.payload],
             };
             // const allItemsInCart = Object.values(actualObj).map(i => Object.values(i));
             // const cartSum = allItemsInCart.reduce((sum, arrBurgers, i) => sum += arrBurgers[i].finalPrice * arrBurgers.length, 0);
             const allItemsInCart = [].concat.apply([], Object.values(newItems));
-            // const currentItemsInCart = allItemsInCart.filter((burger) => burger.id === action.payload.id);
-            // const currentItemsInCart = allItemsInCart.reduce((sum, burger) => {
-            //     if (burger.id === action.payload.id) {
-            //         sum += 1;
-            //     };
-            //     return sum;
-            // }, 0);
             const cartSum = allItemsInCart.reduce((sum, burger) => sum += burger.finalPrice, 0);
             return {
                 ...state,
@@ -52,7 +38,7 @@ const cart = (state = initialState, action) => {
             // const sumDeleted = state.totalPrice - itemsAfterDelete.reduce((sum, burger) => sum += burger.finalPrice, 0);
             // const countAfterDeletionGroup = itemsAfterDelete.reduce((counts) => counts += 1, 0);
 
-            const countAfterDeletionGroup = state.totalCount - copyItemsForDeleteGroup[`${ action.payload.id}${action.payload.priceItem }${ action.payload.type }`].reduce((counts) => counts += 1, 0);
+            const countAfterDeletionGroup = state.totalCount - copyItemsForDeleteGroup[`${ action.payload.id }${ action.payload.priceItem }${ action.payload.type }`].reduce((counts) => counts += 1, 0);
             const sumDeleted = copyItemsForDeleteGroup[`${ action.payload.id }${ action.payload.priceItem }${ action.payload.type }`].reduce((sum, burger) => sum += burger.finalPrice, 0);
             delete copyItemsForDeleteGroup[`${ action.payload.id }${ action.payload.priceItem }${ action.payload.type }`];
             return {
@@ -82,7 +68,6 @@ const cart = (state = initialState, action) => {
             return {
                 ...state,
                 items: newItemsAfterDeleteItem,
-                // totalPrice: newItemsAfterDeleteItem[action.payload].length === 1 ? state.totalPrice : state.totalPrice - state.items[action.payload][0].finalPrice,
                 totalPrice: Object.values(newItemsAfterDeleteItem).flat(1).reduce((sum, burger) => sum += burger.finalPrice, 0),
                 totalCount: Object.values(newItemsAfterDeleteItem).flat(1).length,
             };

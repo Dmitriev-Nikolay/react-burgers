@@ -9,23 +9,24 @@ const BurgerCard = React.memo((props) => {
     const { id, imageUrl, name, types, sizes, price, rating, onClickAddBurger, burgerCountInСart } = props; // { ...burger }
     
     const [activeType, setActiveType] = React.useState(types[0]); // по умолчанию выбран первый
-    const typeNames = ["Классическая булочка", "Булочка с кунжутом"];
-
-    const onSelectedType = (i) => {
-        setActiveType(i);
-    };
     const [activeSize, setActiveSize] = React.useState(sizes[0]);
+
+    const typeNames = ["Классическая булочка", "Булочка с кунжутом"];
     const sizeNames = {
         "S": 0, 
         "M": 50, 
         "XL": 100,
     };
-    
-    const finalPrice = !price ? 0 : price + Object.values(sizeNames)[activeSize];
+
+    const onSelectedType = (i) => {
+        setActiveType(i);
+    };
 
     const onSelectedSize = (i) => {
         setActiveSize(i);
     };
+    
+    const finalPrice = !price ? 0 : price + Object.values(sizeNames)[activeSize];
 
     const onAddBurger = () => {
         const cartItem = {
@@ -73,8 +74,8 @@ const BurgerCard = React.memo((props) => {
                             <li
                                 onClick={ () => onSelectedSize(index) }
                                 className={ classNames({
-                                    'active': activeSize === index,
-                                    'disabled': !sizes.includes(index),
+                                    "active": activeSize === index,
+                                    "disabled": !sizes.includes(index),
                                 })
                                 }
                                 key={ `${ size }_${ index }` }>
@@ -89,8 +90,8 @@ const BurgerCard = React.memo((props) => {
                 <div 
                     onClick={ onAddBurger }
                     className={ classNames({
-                        'button button--outline button--add': true,
-                        'disabled': price === 0,
+                        "button button--outline button--add": true,
+                        "disabled": price === 0,
                     })
                     }
                 >

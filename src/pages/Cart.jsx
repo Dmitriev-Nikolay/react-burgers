@@ -10,15 +10,13 @@ import { CartEmpty } from '../pages/';
 
 const Cart = () => {
     const { items: cartItems, totalPrice, totalCount } = useSelector(({ cartReducer }) => cartReducer);
-
-    // let addedToCart = [];
-    // for (let i = 0; i < Object.keys(cartItems).length; i++) {
-    //         addedBurgersToCart = cartItems[Object.keys(cartItems)[i]].reduce((arrAdded, added, i) => {
-    //         arrAdded.push(added);
-    //         return arrAdded;
-    //     }, addedBurgersToCart);
-    // };
-
+    
+    // 1 вариант 
+    // let addedBurgersToCart = Object.keys(cartItems).map((burgerGroup) => {
+    //     return cartItems[burgerGroup][0];
+    // });
+    
+    // 2 вариант 
     // let addedToCart = Object.values(cartItems).flat(1).reduce((arrAdded, burger) => {
     //     const idx = arrAdded.findIndex(elem => elem.length > 0 && elem[0].finalPrice === burger.finalPrice && elem[0].type === burger.type && elem[0].name === burger.name);
     //     if (idx !== -1) {
@@ -28,10 +26,6 @@ const Cart = () => {
     //     }
     //     return arrAdded;
     // }, []);
-
-    // let addedBurgersToCart = Object.keys(cartItems).map((burgerGroup) => {
-    //     return cartItems[burgerGroup][0];
-    // });
 
     const dispatch = useDispatch(); // mapActions
 
@@ -104,18 +98,6 @@ const Cart = () => {
                                                 onDeleteCartItem={ deleteCartItem }
                                             />
                                         ))
-                                        // addedBurgersToCart.map((burger) => (
-                                        //     <CartItem
-                                        //         name={ burger.name }
-                                        //         imageBurger={ burger.imageUrl }
-                                        //         types={ burger.type }
-                                        //         sizes={ burger.size }
-                                        //         price={ burger.finalPrice }
-                                        //         key={ `${ burger.id }_${ burger.name }` }
-                                        //         quantityItemInCart={ cartItems[`${burger.id}${burger.finalPrice}${burger.type}`].length }
-                                        //         onDeleteGroupCartItem={ deleteCartItem }
-                                        //     />
-                                        // ))
                                     }
                                 </div>
                                 <div className="cart__bottom">
