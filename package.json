@@ -1,6 +1,9 @@
 {
   "name": "react-burgers",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.x"
+  },
   "private": true,
   "homepage": "https://dmitriev-nikolay.github.io/react-burgers/",
   "dependencies": {

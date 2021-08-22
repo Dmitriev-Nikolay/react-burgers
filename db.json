@@ -1,19 +1,165 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+    "burgers": [
+        {
+            "id": 0,
+            "imageUrl": "burgers/alpacino.jpg",
+            "name": "Аль Пачино",
+            "types": [
+                0,
+                1
+            ],
+            "sizes": [
+                1,
+                2
+            ],
+            "price": 760,
+            "category": 0,
+            "rating": 4.8
+        },
+        {
+            "id": 1,
+            "imageUrl": "burgers/bruklin.jpg",
+            "name": "Бруклин",
+            "types": [
+                0,
+                1
+            ],
+            "sizes": [
+                1,
+                2
+            ],
+            "price": 920,
+            "category": 0,
+            "rating": 4.3
+        },
+        {
+            "id": 2,
+            "imageUrl": "burgers/chiken.jpg",
+            "name": "Куриный",
+            "types": [
+                1
+            ],
+            "sizes": [
+                0,
+                1,
+                2
+            ],
+            "price": 560,
+            "category": 2,
+            "rating": 4.6
+        },
+        {
+            "id": 3,
+            "imageUrl": "burgers/classic.jpg",
+            "name": "Классический",
+            "types": [
+                0,
+                1
+            ],
+            "sizes": [
+                0,
+                1,
+                2
+            ],
+            "price": 660,
+            "category": 0,
+            "rating": 4.9
+        },
+        {
+            "id": 4,
+            "imageUrl": "burgers/fish.jpg",
+            "name": "Рыбный",
+            "types": [
+                0
+            ],
+            "sizes": [
+                0,
+                1,
+                2
+            ],
+            "price": 450,
+            "category": 4,
+            "rating": 4.4
+        },
+        {
+            "id": 5,
+            "imageUrl": "burgers/fourcheese.jpg",
+            "name": "4 Сыра",
+            "types": [
+                0,
+                1
+            ],
+            "sizes": [
+                0,
+                1,
+                2
+            ],
+            "price": 580,
+            "category": 3,
+            "rating": 4.6
+        },
+        {
+            "id": 6,
+            "imageUrl": "burgers/gamburger.jpg",
+            "name": "Гамбургер",
+            "types": [
+                0,
+                1
+            ],
+            "sizes": [
+                0
+            ],
+            "price": 400,
+            "category": 0,
+            "rating": 4.7
+        },
+        {
+            "id": 7,
+            "imageUrl": "burgers/jam.jpg",
+            "name": "Джем",
+            "types": [
+                0
+            ],
+            "sizes": [
+                0,
+                1
+            ],
+            "price": 470,
+            "category": 1,
+            "rating": 4.3
+        },
+        {
+            "id": 8,
+            "imageUrl": "burgers/onill.jpg",
+            "name": "О'нилл",
+            "types": [
+                0,
+                1
+            ],
+            "sizes": [
+                0,
+                1,
+                2
+            ],
+            "price": 860,
+            "category": 0,
+            "rating": 4.8
+        },
+        {
+            "id": 9,
+            "imageUrl": "burgers/peach.jpg",
+            "name": "Персиковый",
+            "types": [
+                0,
+                1
+            ],
+            "sizes": [
+                0,
+                1
+            ],
+            "price": 590,
+            "category": 1,
+            "rating": 4.4
+        }
+    ]
 }
