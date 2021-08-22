@@ -5,7 +5,6 @@
     "node": "14.x"
   },
   "private": true,
-  "homepage": "https://dmitriev-nikolay.github.io/react-burgers/",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@testing-library/jest-dom": "^5.11.10",
