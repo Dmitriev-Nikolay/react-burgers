@@ -1,5 +1,11 @@
-import { createProxyMiddleware } from 'http-proxy-middleware';
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
-export default function (app) {
-    app.use(createProxyMiddleware("/burgers", { target: "http://localhost:3080" }));
+module.exports = function (app) {
+    app.use(
+        '/burgers',
+        createProxyMiddleware({
+            target: 'http://localhost:3050',
+            changeOrigin: true,
+        })
+    );
 };

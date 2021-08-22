@@ -58,7 +58,7 @@ const Home = React.memo(() => {
                     onClickSort={ onSelectSort }
                 />
             </div>
-            <h2 className="content__title">Все бургеры</h2>
+            <h2 className="content__title">{ nameCategories[category] ? nameCategories[category] : 'Все' }</h2>
             <div className="content__items">
                 {
                     isLoaded
@@ -76,7 +76,7 @@ const Home = React.memo(() => {
                                 />
                             )
                         })
-                        : Array.from(Array(12), (_, i) => <BurgerCardLoading key={ i } />)
+                        : Array.from(Array(10), (_, i) => <BurgerCardLoading key={ i } />)
                 }
             </div>
         </div>

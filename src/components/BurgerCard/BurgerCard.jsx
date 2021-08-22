@@ -44,7 +44,9 @@ const BurgerCard = React.memo((props) => {
         <div className="burger-block">
             <img className="burger-block__image"
                 src={ imageUrl }
-                alt={ name } 
+                alt={ name }
+                width="260"
+                height="180"
             />
             <div className="burger-block__rating">
                 <img width="20" src={ starIcon } alt="Star icon" />

@@ -19,7 +19,7 @@
     "react-lodash": "^0.1.2",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "react-transition-group": "^4.4.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
@@ -30,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch public/data.json --port=3080"
+    "server": "json-server --watch public/data.json --port=3050"
   },
   "eslintConfig": {
     "extends": [

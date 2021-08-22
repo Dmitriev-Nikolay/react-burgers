@@ -2,22 +2,24 @@
 
 .burger-block {
   position: relative;
-  width: 280px;
+  max-width: 280px;
   text-align: center;
   margin: 20px 40px;
   transition: 0.3s;
-  padding: 5px;
 
   &__image {
-    width: 260px;
+    width: 100%;
+    height: auto;
+    padding: 10px;
   }
 
   &__rating {
     position: absolute;
-    right: 10px;
+    right: 0;
     top: 0;
+
     img {
-      padding-right: 5px;
+      margin-right: 5px;
     }
   }
 
@@ -51,16 +53,19 @@
         font-weight: 600;
         font-size: 14px;
         @include noselect();
+
         &:hover {
           box-shadow: 0 0 5px 2px rgba(221, 221, 221, 1);
           border-radius: 5px;
         }
+
         &.active {
           background: #ffffff;
           box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
           border-radius: 5px;
           cursor: auto;
         }
+
         &.disabled {
           opacity: 0.4;
           pointer-events: none;
@@ -83,9 +88,70 @@
     line-height: 27px;
     letter-spacing: 0.015em;
   }
+
+  &:hover {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-4px);
+  }
 }
 
-.burger-block:hover {
-  -webkit-transform: translateY(-5px);
-  transform: translateY(-4px);
+@media screen and (max-width: 1361px) {
+  .burger-block {
+    max-width: 240px;
+    margin: 20px 30px;
+
+    &__rating {
+      font-size: 14px;
+
+      img {
+        width: 15px;
+      }
+    }
+
+    &__selector {
+      ul {
+        li {
+          font-size: 12px;
+        }
+      }
+    }
+
+    &__bottom {
+      justify-content: space-around;
+    }
+
+    &__price {
+      font-size: 20px;
+      line-height: 24px;
+      margin: 0;
+      min-width: 70px;
+    }
+
+    &:hover {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+}
+
+@media screen and (max-width: 776px) {
+  .burger-block {
+    max-width: 200px;
+    margin: 15px 20px;
+
+    &__selector {
+      ul {
+        li {
+          font-size: 12px;
+        }
+      }
+    }
+
+    &__price {
+      font-size: 20px;
+      line-height: 24px;
+      margin: 0;
+      min-width: 70px;
+    }
+  }
 }

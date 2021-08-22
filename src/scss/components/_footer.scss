@@ -28,7 +28,7 @@
   }
 
   .who-dev {
-    padding-right: 10px;
+    margin-right: 10px;
     align-self: center;
   }
 
@@ -37,9 +37,12 @@
   }
 
   .stats-part {
-    margin-right: 50px;
     display: flex;
     flex-direction: column;
+
+    &:first-child {
+      margin-right: 50px;
+    }
   }
 
   .stats-main {
@@ -95,14 +98,151 @@
         border: 1px solid #ccc;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), inset 0 0 50px rgba(0, 0, 0, 0.1);
         border-radius: 24px;
-        margin: 0 10px 0 0;
         padding: 6px;
         color: $orange;
+      }
+
+      a + a {
+        margin: 0 0 0 10px;
       }
 
       a:hover {
         background: $background;
         color: #fff;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .footer {
+    .container {
+      flex-direction: column;
+      align-items: center;
+      position: static;
+    }
+
+    .dev {
+      position: static;
+    }
+
+    .footer-part-stats {
+      margin-bottom: 30px;
+      min-width: 100%;
+      justify-content: space-around;
+    }
+
+    .footer-copyright {
+      justify-content: space-around;
+      .copyright {
+        font-size: 14px;
+      }
+
+      .social {
+        position: static;
+
+        p {
+          font-size: 14px;
+        }
+
+        a {
+          width: 36px;
+          height: 36px;
+
+          i {
+            font-size: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 776px) {
+  .footer {
+    .footer-part-stats {
+      .stats-main {
+        line-height: 30px;
+        font-size: 18px;
+        margin-bottom: 10px;
+
+        &__money-value {
+          font-size: 18px;
+        }
+
+        &__money-currency {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .stats-part {
+      flex-direction: column;
+
+      &:first-child {
+        margin-right: 15px;
+      }
+
+      span {
+        font-size: 12px;
+      }
+    }
+
+    .footer-copyright {
+      justify-content: space-around;
+      .copyright {
+        font-size: 14px;
+      }
+
+      .social {
+        position: static;
+
+        p {
+          font-size: 14px;
+        }
+
+        a {
+          width: 36px;
+          height: 36px;
+
+          i {
+            font-size: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 577px) {
+  .footer {
+    .dev {
+      align-items: center;
+    }
+
+    .who-dev {
+      margin: 0 10px 0 0;
+    }
+
+    .footer-part-stats {
+      display: none;
+    }
+
+    .footer-copyright {
+      flex-direction: column-reverse;
+
+      .copyright {
+        justify-content: center;
+        align-items: center;
+        padding: 20px 10px;
+      }
+
+      .social {
+        padding: 20px 10px;
+
+        p {
+          display: none;
+        }
       }
     }
   }
