@@ -52,8 +52,6 @@
 
 @media screen and (max-width: 577px) {
   .header {
-    padding: 20px 0;
-
     .container {
       flex-direction: column;
     }
@@ -82,5 +80,11 @@
         text-align: center;
       }
     }
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .header {
+    padding: 15px 0;
   }
 }

@@ -1,74 +1,103 @@
-# react-burgers
+# React-burgers
+
+**React-burgers app** - online store application for ordering burgers.
+
+## Running application
 
 https://react-burgers-redux.herokuapp.com/
 
-# Getting Started with Create React App
+## Application information
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
++ the application works on all common resolutions
++ the app is built with create-react-app
++ functional components used
++ To save the state of the basket, use ___**LocalStorage**___
++ for styles used scss, mixins, variables, animation
++ for the convenience of working with classes, the library is used ___**classnames**___
++ the library is used for runtime type checking ___**prop-types**___
++ To simulate requests to the server to receive data, the library is used ___**axios**___
 
-## Available Scripts
+## Installation
+___
++ clone this repository to your computer
++ open a project in IDE
++ and:
 
-In the project directory, you can run:
+```javascript
+npm install
+```
 
-### `npm start`
+## Usage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open two consoles and:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+In the first
+```javascript
+npm start
+```
+In the second
+```javascript
+npm run server
+```
 
-### `npm test`
+## Functional
+___
+### Start page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+>Overview Start page.
 
-### `npm run build`
+![app](./src/assets/screens/functional.gif)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Animated loading skeletons burgers
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+>A beautiful animation has been made to display the progress of loading burgers.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![app](./src/assets/screens/no-data-loading.gif)
 
-### `npm run eject`
+### Category selection
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+>Burgers are categorized and can be changed.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![app](./src/assets/screens/category.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Sort burgers
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+>Sorting burgers by price, popularity and name.
 
-## Learn More
+![app](./src/assets/screens/sort.gif)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Add burger to cart
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+>Each burger has 2 types of buns and 3 sizes to choose from. The price varies depending on the size of the burger. When adding, an indicator of the number of burgers added to the basket appears in the button. Also, when adding, the total quantity and price on the cart button in the header change.
 
-### Code Splitting
+![app](./src/assets/screens/add-to-cart.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Cart page
 
-### Analyzing the Bundle Size
+>Overview Cart page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![app](./src/assets/screens/cart.gif)
 
-### Making a Progressive Web App
+### Grouping of burgers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+>When adding burgers to the basket, they are grouped according to 3 criteria: type of bun, size, name. Therefore, you can clearly see which types of burgers you have added to your cart.
 
-### Advanced Configuration
+![app](./src/assets/screens/cart-grouping.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Changing the contents of the basket
 
-### Deployment
+>To change the number of burgers of each type, there are 2 buttons to increase and decrease. When decreasing each type of burgers to one, the decrease button is deactivated. If you need to delete a group of burgers, a separate delete button is provided.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![app](./src/assets/screens/cart-one.gif)
 
-### `npm run build` fails to minify
+### Remove cart
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+>If necessary, there is a button to clear the entire basket with confirmation. When deleting, an information window appears.
+
+![app](./src/assets/screens/cart-remove.gif)
+
+### Adaptive for all permissions
+
+>The application is adapted for all common device resolutions.
+
+![app](./src/assets/screens/adaptive.gif)
